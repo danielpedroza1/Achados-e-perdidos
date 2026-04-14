@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Solicitações - Achados e Perdidos</title>
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:Arial, sans-serif;
+    }
+
+    body{
+      background:#f3f4f6;
+      display:flex;
+      min-height:100vh;
+    }
+
+    /* SIDEBAR PADRÃO IGUAL ÀS OUTRAS */
+    .sidebar{
+      width:220px;
+      background:#0b0f19;
+      color:white;
+      padding:20px 15px;
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+      min-height:100vh;
+    }
+
+    .logo h2{
+      font-size:22px;
+      margin-bottom:5px;
+    }
+
+    .logo p{
+      font-size:13px;
+      color:#cbd5e1;
+      margin-bottom:20px;
+    }
+
+    .menu a{
+      display:block;
+      color:white;
+      text-decoration:none;
+      padding:12px;
+      border-radius:10px;
+      margin-bottom:10px;
+      font-size:14px;
+      font-weight:normal;
+    }
+
+    .menu a.active,
+    .menu a:hover{
+      background:#1e293b;
+    }
+
+    /* MAIN */
+    .main{
+      flex:1;
+      padding:25px 30px;
+    }
+
+    .main h1{
+      font-size:34px;
+      margin-bottom:5px;
+    }
+
+    .subtitle{
+      color:#6b7280;
+      font-size:14px;
+      margin-bottom:25px;
+    }
+
+    .badges{
+      display:flex;
+      gap:15px;
+      margin-bottom:25px;
+    }
+
+    .badge{
+      padding:10px 16px;
+      border-radius:10px;
+      font-size:14px;
+      font-weight:bold;
+    }
+
+    .gray{
+      background:#e5e7eb;
+    }
+
+    .yellow{
+      background:#d4a514;
+      color:black;
+    }
+
+    .section-title{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      font-size:18px;
+      font-weight:bold;
+      margin-bottom:20px;
+    }
+
+    .cards{
+      display:grid;
+      grid-template-columns:repeat(2, 1fr);
+      gap:15px;
+      margin-bottom:25px;
+      max-width:1100px;
+    }
+
+    .card{
+      background:white;
+      border-radius:16px;
+      padding:25px;
+      border:1px solid #e6cf8a;
+      box-shadow:0 2px 6px rgba(0,0,0,0.08);
+    }
+
+    .history-card{
+      max-width:510px;
+      border:1px solid #d1d5db;
+    }
+
+    .card-top{
+      display:flex;
+      justify-content:space-between;
+      margin-bottom:15px;
+    }
+
+    .name{
+      font-size:16px;
+      font-weight:bold;
+      margin-bottom:10px;
+    }
+
+    .course{
+      font-size:14px;
+      color:#6b7280;
+    }
+
+    .status{
+      padding:5px 12px;
+      border-radius:20px;
+      font-size:12px;
+      font-weight:bold;
+      height:fit-content;
+    }
+
+    .pending{
+      background:#d4a514;
+      color:black;
+    }
+
+    .approved{
+      background:green;
+      color:white;
+    }
+
+    .info{
+      margin:18px 0;
+      line-height:30px;
+      font-size:14px;
+      color:#4b5563;
+    }
+
+    .info div{
+      display:flex;
+      align-items:center;
+      gap:8px;
+    }
+
+    .buttons{
+      display:flex;
+      gap:10px;
+      margin-top:15px;
+    }
+
+    button{
+      border:none;
+      border-radius:10px;
+      padding:10px 14px;
+      font-weight:bold;
+      cursor:pointer;
+      font-size:14px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:8px;
+    }
+
+    .btn-details{
+      background:#f3f4f6;
+      flex:1;
+    }
+
+    .btn-approve{
+      background:#2f8b2f;
+      color:white;
+      flex:1;
+    }
+
+    .btn-reject{
+      background:#c91d1d;
+      color:white;
+      width:42px;
+    }
+
+    .btn-delivered{
+      background:#c91d1d;
+      color:white;
+      flex:1;
+    }
+
+    .history-title{
+      font-size:18px;
+      font-weight:bold;
+      margin-bottom:18px;
+    }
+
+    a{
+        text-decoration: none;
+        color: white;
+    }
+  </style>
+</head>
+<body>
+
+  <aside class="sidebar">
+    <div>
+      <div class="logo">
+        <a href="../tela inicial/index.html"><h2>SENAI</h2></a>
+        <p>Achados e Perdidos</p>
+      </div>
+
+      <nav class="menu">
+        <a href="../area do adm/area_adm.html">Dashboard</a>
+        <a href="../cadastrar itens/index.html">Cadastrar Item</a>
+        <a href="../solicitações/index.html" class="active">Solicitações</a>
+      </nav>
+    </div>
+
+    <nav class="menu">
+      <a href="#">Área do Aluno</a>
+    </nav>
+  </aside>
+
+  <main class="main">
+    <h1>Solicitações</h1>
+    <p class="subtitle">Gerencie as solicitações de itens enviadas pelos alunos.</p>
+
+    <div class="badges">
+      <div class="badge gray">3 total</div>
+      <div class="badge yellow">2 pendentes</div>
+    </div>
+
+    <div class="section-title">
+      Solicitações Pendentes
+    </div>
+
+    <div class="cards">
+      <div class="card">
+        <div class="card-top">
+          <div>
+            <div class="name">Maria Santos</div>
+            <div class="course">Técnico em Informática - 2A</div>
+          </div>
+          <div class="status pending">Pendente</div>
+        </div>
+
+        <div class="info">
+          <div>maria.santos@email.com</div>
+          <div>Roupas - Biblioteca</div>
+        </div>
+
+        <div class="buttons">
+          <button class="btn-details">Detalhes</button>
+          <button class="btn-approve">Aprovar</button>
+          <button class="btn-reject">X</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-top">
+          <div>
+            <div class="name">Carlos Oliveira</div>
+            <div class="course">Técnico em Mecânica - 1B</div>
+          </div>
+          <div class="status pending">Pendente</div>
+        </div>
+
+        <div class="info">
+          <div>(11) 99999-8888</div>
+          <div>Eletrônicos - Sala 101</div>
+        </div>
+
+        <div class="buttons">
+          <button class="btn-details">Detalhes</button>
+          <button class="btn-approve">Aprovar</button>
+          <button class="btn-reject">X</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="history-title">Histórico</div>
+
+    <div class="card history-card">
+      <div class="card-top">
+        <div>
+          <div class="name">João Silva</div>
+          <div class="course">Técnico em Administração - 3A</div>
+        </div>
+        <div class="status approved">Aprovado</div>
+      </div>
+
+      <div class="info">
+        <div>joao.silva@email.com</div>
+        <div>Documentos - Recepção</div>
+      </div>
+
+      <div class="buttons">
+        <button class="btn-details">Detalhes</button>
+        <button class="btn-delivered">Marcar Entregue</button>
+      </div>
+    </div>
+  </main>
+
+</body>
+</html>

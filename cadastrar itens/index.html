@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cadastrar Item - Achados e Perdidos</title>
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:Arial, sans-serif;
+    }
+
+    body{
+      background:#f3f4f6;
+      display:flex;
+      min-height:100vh;
+    }
+
+    /* SIDEBAR */
+    .sidebar{
+      width:220px;
+      background:#0b0f19;
+      color:white;
+      padding:20px 15px;
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+      min-height:100vh;
+    }
+
+    .logo h2{
+      font-size:22px;
+      margin-bottom:5px;
+    }
+
+    .logo p{
+      font-size:13px;
+      color:#cbd5e1;
+      margin-bottom:20px;
+    }
+
+    .menu a{
+      display:block;
+      color:white;
+      text-decoration:none;
+      padding:12px;
+      border-radius:10px;
+      margin-bottom:10px;
+      font-size:14px;
+    }
+
+    .menu a.active,
+    .menu a:hover{
+      background:#1e293b;
+    }
+
+    /* CONTEÚDO */
+    .main{
+      flex:1;
+      padding:30px;
+    }
+
+    .main h1{
+      font-size:38px;
+      margin-bottom:8px;
+    }
+
+    .subtitle{
+      color:#6b7280;
+      margin-bottom:25px;
+      font-size:14px;
+    }
+
+    /* CARD FORM */
+    .form-box{
+      background:white;
+      width:700px;
+      padding:30px;
+      border-radius:16px;
+      box-shadow:0 2px 8px rgba(0,0,0,0.08);
+    }
+
+    .form-box h2{
+      font-size:24px;
+      margin-bottom:10px;
+    }
+
+    .form-box p{
+      color:#6b7280;
+      font-size:14px;
+      margin-bottom:25px;
+    }
+
+    label{
+      display:block;
+      margin-bottom:8px;
+      margin-top:18px;
+      font-weight:bold;
+      font-size:14px;
+    }
+
+    input,
+    select,
+    textarea{
+      width:100%;
+      padding:12px;
+      border:1px solid #d1d5db;
+      border-radius:8px;
+      font-size:14px;
+      outline:none;
+    }
+
+    textarea{
+      height:90px;
+      resize:none;
+    }
+
+    .row{
+      display:flex;
+      gap:15px;
+      margin-top:10px;
+    }
+
+    .field{
+      flex:1;
+    }
+
+    .status-box{
+      width:200px;
+      margin-top:15px;
+    }
+
+    .buttons{
+      display:flex;
+      justify-content:flex-end;
+      gap:15px;
+      margin-top:30px;
+    }
+
+    .btn-clear{
+      background:white;
+      border:1px solid #d1d5db;
+      padding:12px 18px;
+      border-radius:8px;
+      cursor:pointer;
+      font-weight:bold;
+    }
+
+    .btn-submit{
+      background:#b91c1c;
+      color:white;
+      border:none;
+      padding:12px 18px;
+      border-radius:8px;
+      cursor:pointer;
+      font-weight:bold;
+    }
+
+    .admin-text{
+      font-size:12px;
+      color:#6b7280;
+      font-weight:normal;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div>
+      <div class="logo">
+        <a href="../tela inicial/index.html"><h2>SENAI</h2></a>
+        <p>Achados e Perdidos</p>
+      </div>
+
+      <nav class="menu">
+        <a href="../area do adm/area_adm.html">Dashboard</a>
+        <a href="../cadastrar itens/index.html" class="active">Cadastrar Item</a>
+        <a href="../solicitações/index.html">Solicitações</a>
+      </nav>
+    </div>
+
+    <nav class="menu">
+      <a href="#">Área do Aluno</a>
+    </nav>
+  </aside>
+
+  <!-- CONTEÚDO -->
+  <main class="main">
+    <h1>Cadastrar Item</h1>
+    <p class="subtitle">Registre um novo item encontrado no sistema.</p>
+
+    <div class="form-box">
+      <h2>Novo Item Encontrado</h2>
+      <p>Preencha os dados do item encontrado. A descrição interna é visível apenas para administradores.</p>
+
+      <form>
+        <label>Nome do Objeto *</label>
+        <input type="text" placeholder="Ex: Carregador de Notebook, Óculos de Grau">
+
+        <div class="row">
+          <div class="field">
+            <label>Categoria *</label>
+            <select>
+              <option>Selecione a categoria</option>
+              <option>Eletrônicos</option>
+              <option>Documentos</option>
+              <option>Roupas</option>
+              <option>Acessórios</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label>Sala/Local Encontrado *</label>
+            <select>
+              <option>Selecione o local</option>
+              <option>Sala 101</option>
+              <option>Biblioteca</option>
+              <option>Cantina</option>
+              <option>Recepção</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="field">
+            <label>Data *</label>
+            <input type="date">
+          </div>
+
+          <div class="field">
+            <label>Hora *</label>
+            <input type="time">
+          </div>
+        </div>
+
+        <label>
+          Descrição Interna *
+          <span class="admin-text">(visível apenas para administradores)</span>
+        </label>
+        <textarea placeholder="Descreva o item com detalhes: cor, marca, características específicas, conteúdo (se houver)..."></textarea>
+
+        <div class="status-box">
+          <label>Status</label>
+          <select>
+            <option>Disponível</option>
+            <option>Solicitado</option>
+            <option>Entregue</option>
+          </select>
+        </div>
+
+        <div class="buttons">
+          <button type="reset" class="btn-clear">Limpar</button>
+          <button type="submit" class="btn-submit">Cadastrar Item</button>
+        </div>
+      </form>
+    </div>
+  </main>
+
+</body>
+</html>

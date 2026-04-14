@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SENAI Achados e Perdidos</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:'Inter',sans-serif;
+    }
+
+    body{
+      background:#f3f4f6;
+      color:#111827;
+    }
+
+    .container{
+      width:90%;
+      max-width:1100px;
+      margin:0 auto;
+      position:relative;
+      z-index:2;
+    }
+
+    /* HERO */
+    .hero{
+      min-height:48vh;
+      background:#05080f;
+      position:relative;
+      overflow:hidden;
+      display:flex;
+      align-items:center;
+    }
+
+    .hero::before{
+      content:'';
+      position:absolute;
+      inset:0;
+      background-image:
+        linear-gradient(rgba(255,255,255,.06) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(255,255,255,.06) 1px,transparent 1px);
+      background-size:60px 60px;
+    }
+
+    .top-brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      padding-top:20px;
+      color:#fff;
+      margin-bottom:28px;
+    }
+
+    .logo{
+      width:48px;
+      height:48px;
+      background:#c81e1e;
+      border-radius:14px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:22px;
+    }
+
+    .brand-text h3{
+      font-size:28px;
+      font-weight:800;
+    }
+
+    .brand-text p{
+      font-size:14px;
+      color:#d1d5db;
+    }
+
+    /* TEXTO VOLTANDO PARA BAIXO */
+    .hero-content{
+      padding:30px 0 40px;
+      color:#fff;
+      max-width:800px;
+    }
+
+    .hero-content h1{
+      font-size:30px;
+      line-height:1.2;
+      font-weight:800;
+      margin-bottom:16px;
+    }
+
+    .hero-content p{
+      font-size:18px;
+      line-height:1.5;
+      color:#d1d5db;
+      margin-bottom:24px;
+      max-width:750px;
+    }
+
+    .buttons{
+      display:flex;
+      gap:16px;
+      flex-wrap:wrap;
+    }
+
+    .btn{
+      padding:14px 22px;
+      border:none;
+      border-radius:12px;
+      font-size:16px;
+      font-weight:600;
+      cursor:pointer;
+      transition:.2s;
+    }
+
+    .btn-primary{
+      background:#c81e1e;
+      color:#fff;
+    }
+
+    .btn-secondary{
+      background:#fff;
+      color:#111827;
+    }
+
+    .btn:hover{
+      transform:translateY(-2px);
+    }
+
+    /* SECTION */
+    section{
+      padding:60px 0;
+    }
+
+    .section-title{
+      text-align:center;
+      font-size:30px;
+      font-weight:800;
+      margin-bottom:12px;
+    }
+
+    .section-sub{
+      text-align:center;
+      font-size:18px;
+      color:#6b7280;
+      margin-bottom:40px;
+    }
+
+    .cards{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:20px;
+    }
+
+    .card{
+      background:#fff;
+      padding:18px;
+      border-radius:12px;
+      box-shadow:0 4px 12px rgba(0,0,0,.08);
+      border:1px solid #e5e7eb;
+    }
+
+    .icon{
+      width:48px;
+      height:48px;
+      border-radius:14px;
+      background:#fee2e2;
+      color:#c81e1e;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:22px;
+      margin-bottom:18px;
+    }
+
+    .card h3{
+      font-size:22px;
+      margin-bottom:10px;
+    }
+
+    .card p{
+      font-size:16px;
+      line-height:1.5;
+      color:#6b7280;
+    }
+
+    /* CTA */
+    .cta{
+      background:#eef0f3;
+      text-align:center;
+      padding:45px 0;
+    }
+
+    .cta h2{
+      font-size:28px;
+      margin-bottom:10px;
+    }
+
+    .cta p{
+      font-size:17px;
+      color:#6b7280;
+      margin-bottom:22px;
+    }
+
+    /* FOOTER */
+    footer{
+      padding:24px 0;
+      border-top:1px solid #d1d5db;
+      background:#fff;
+    }
+
+    .footer-wrap{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      flex-wrap:wrap;
+      gap:16px;
+    }
+
+    .footer-brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      font-weight:700;
+    }
+
+    .mini-logo{
+      width:36px;
+      height:36px;
+      background:#c81e1e;
+      border-radius:10px;
+      color:#fff;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+
+    footer p{
+      color:#6b7280;
+      font-size:16px;
+    }
+
+    @media(max-width:900px){
+      .cards{
+        grid-template-columns:1fr;
+      }
+
+      .hero-content h1{
+        font-size:26px;
+      }
+
+      .hero-content p{
+        font-size:16px;
+      }
+
+      .section-title{
+        font-size:26px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="hero">
+    <div class="container">
+      <div class="top-brand">
+        <div class="logo">📦</div>
+        <div class="brand-text">
+          <h3>SENAI</h3>
+          <p>Achados e Perdidos</p>
+        </div>
+      </div>
+
+      <div class="hero-content">
+        <h1>Sistema de Achados e Perdidos</h1>
+        <p>
+          Encontre seus objetos perdidos de forma rápida e segura.
+          Nosso sistema conecta alunos aos itens encontrados nas dependências do SENAI.
+        </p>
+
+        <div class="buttons">
+          <button class="btn btn-primary">🔎 Área do Aluno</button>
+          <a href="../area do adm/area_adm.html"><button class="btn btn-secondary">🛡️ Área do Administrador</button></a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section>
+    <div class="container">
+      <h2 class="section-title">Como funciona?</h2>
+      <p class="section-sub">Um processo simples e seguro para recuperar seus pertences.</p>
+
+      <div class="cards">
+        <div class="card">
+          <div class="icon">📦</div>
+          <h3>Item Encontrado</h3>
+          <p>Funcionários registram itens encontrados nas dependências do SENAI.</p>
+        </div>
+
+        <div class="card">
+          <div class="icon">🔎</div>
+          <h3>Busca e Solicitação</h3>
+          <p>Alunos visualizam os itens e enviam solicitações com descrições detalhadas.</p>
+        </div>
+
+        <div class="card">
+          <div class="icon">🛡️</div>
+          <h3>Verificação e Entrega</h3>
+          <p>Administradores verificam as informações e aprovam a devolução do item.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta">
+    <div class="container">
+      <h2>Perdeu algo?</h2>
+      <p>Acesse a área do aluno e verifique se seu item foi encontrado.</p>
+      <button class="btn btn-primary">Verificar Itens →</button>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container footer-wrap">
+      <div class="footer-brand">
+        <div class="mini-logo">📦</div>
+        <span>SENAI Achados e Perdidos</span>
+      </div>
+      <p>Sistema desenvolvido para uso interno do SENAI.</p>
+    </div>
+  </footer>
+
+</body>
+</html>

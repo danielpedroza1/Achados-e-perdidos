@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard - Achados e Perdidos</title>
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:Arial, sans-serif;
+    }
+
+    body{
+      background:#f3f4f6;
+      display:flex;
+      min-height:100vh;
+    }
+
+    .sidebar{
+      width:220px;
+      background:#0b0f19;
+      color:white;
+      padding:20px 15px;
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+    }
+
+    .logo h2{
+      font-size:22px;
+      margin-bottom:5px;
+    }
+
+    .logo p{
+      font-size:13px;
+      color:#cbd5e1;
+      margin-bottom:20px;
+    }
+
+    .menu a{
+      display:block;
+      color:white;
+      text-decoration:none;
+      padding:12px;
+      border-radius:10px;
+      margin-bottom:10px;
+      font-size:14px;
+    }
+
+    .menu a.active,
+    .menu a:hover{
+      background:#1e293b;
+    }
+
+    .main{
+      flex:1;
+      padding:25px;
+    }
+
+    .top-bar{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      margin-bottom:20px;
+    }
+
+    .top-bar h1{
+      font-size:34px;
+      margin-bottom:5px;
+    }
+
+    .top-bar p{
+      color:#6b7280;
+      font-size:14px;
+    }
+
+    .btn{
+      background:#b91c1c;
+      color:white;
+      border:none;
+      padding:12px 18px;
+      border-radius:8px;
+      cursor:pointer;
+      font-weight:bold;
+    }
+
+    .cards{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:15px;
+      margin-bottom:20px;
+    }
+
+    .card{
+      background:white;
+      padding:20px;
+      border-radius:12px;
+      box-shadow:0 2px 6px rgba(0,0,0,0.08);
+      min-height:110px;
+    }
+
+    .card h3{
+      font-size:14px;
+      margin-bottom:20px;
+      color:#374151;
+    }
+
+    .card .number{
+      font-size:32px;
+      font-weight:bold;
+      margin-bottom:5px;
+    }
+
+    .table-box{
+      background:white;
+      padding:20px;
+      border-radius:12px;
+      box-shadow:0 2px 6px rgba(0,0,0,0.08);
+      margin-bottom:20px;
+    }
+
+    .table-header{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      margin-bottom:15px;
+    }
+
+    .table-header h2{
+      font-size:20px;
+      margin-bottom:4px;
+    }
+
+    .table-header p{
+      font-size:13px;
+      color:#6b7280;
+    }
+
+    .table-btn{
+      padding:8px 14px;
+      border:none;
+      border-radius:8px;
+      background:#e5e7eb;
+      cursor:pointer;
+      font-size:12px;
+      font-weight:bold;
+    }
+
+    table{
+      width:100%;
+      border-collapse:collapse;
+    }
+
+    th, td{
+      text-align:left;
+      padding:12px 8px;
+      border-bottom:1px solid #e5e7eb;
+      font-size:14px;
+    }
+
+    .status{
+      padding:5px 10px;
+      border-radius:20px;
+      font-size:12px;
+      font-weight:bold;
+    }
+
+    .green{
+      background:#dcfce7;
+      color:#166534;
+    }
+
+    .yellow{
+      background:#fef3c7;
+      color:#92400e;
+    }
+
+    .gray{
+      background:#e5e7eb;
+      color:#374151;
+    }
+  </style>
+</head>
+<body>
+
+  <aside class="sidebar">
+    <div>
+      <div class="logo">
+        <a href="../tela inicial/index.html"><h2>SENAI</h2></a>
+        <p>Achados e Perdidos</p>
+      </div>
+
+      <nav class="menu">
+        <a href="../area do adm/area_adm.html" class="active">Dashboard</a>
+        <a href="../cadastrar itens/index.html">Cadastrar Item</a>
+        <a href="../solicitações/index.html">Solicitações</a>
+      </nav>
+    </div>
+
+    <nav class="menu">
+      <a href="#">Área do Aluno</a>
+    </nav>
+  </aside>
+
+  <main class="main">
+    <div class="top-bar">
+      <div>
+        <h1>Dashboard</h1>
+        <p>Gerencie os itens encontrados e as solicitações dos alunos.</p>
+      </div>
+      <button class="btn">Cadastrar Item</button>
+    </div>
+
+    <section class="cards">
+      <div class="card">
+        <h3>Total de Itens</h3>
+        <div class="number">6</div>
+        <p>itens cadastrados</p>
+      </div>
+
+      <div class="card">
+        <h3>Disponíveis</h3>
+        <div class="number" style="color:green;">4</div>
+        <p>aguardando dono</p>
+      </div>
+
+      <div class="card">
+        <h3>Entregues</h3>
+        <div class="number">1</div>
+        <p>devolvidos aos donos</p>
+      </div>
+
+      <div class="card">
+        <h3>Solicitações Pendentes</h3>
+        <div class="number" style="color:#b91c1c;">2</div>
+        <p>ver solicitações</p>
+      </div>
+    </section>
+
+    <section class="table-box">
+      <div class="table-header">
+        <div>
+          <h2>Itens Recentes</h2>
+          <p>Últimos itens cadastrados no sistema</p>
+        </div>
+        <button class="table-btn">Ver Todos</button>
+      </div>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Nome</th>
+            <th>Categoria</th>
+            <th>Local</th>
+            <th>Data</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Carregador de Notebook Dell</td>
+            <td>Eletrônicos</td>
+            <td>Sala 101</td>
+            <td>14/03/2024</td>
+            <td><span class="status green">Disponível</span></td>
+          </tr>
+          <tr>
+            <td>Jaqueta Jeans</td>
+            <td>Roupas</td>
+            <td>Biblioteca</td>
+            <td>13/03/2024</td>
+            <td><span class="status yellow">Solicitado</span></td>
+          </tr>
+          <tr>
+            <td>Óculos de Grau</td>
+            <td>Acessórios</td>
+            <td>Cantina</td>
+            <td>12/03/2024</td>
+            <td><span class="status green">Disponível</span></td>
+          </tr>
+          <tr>
+            <td>Carteira de Identidade</td>
+            <td>Documentos</td>
+            <td>Recepção</td>
+            <td>11/03/2024</td>
+            <td><span class="status gray">Entregue</span></td>
+          </tr>
+          <tr>
+            <td>Pendrive 32GB</td>
+            <td>Eletrônicos</td>
+            <td>Laboratório de Informática</td>
+            <td>10/03/2024</td>
+            <td><span class="status green">Disponível</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="table-box">
+      <div class="table-header">
+        <div>
+          <h2>Solicitações Recentes</h2>
+          <p>Últimas solicitações dos alunos</p>
+        </div>
+        <button class="table-btn">Ver Todas</button>
+      </div>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Aluno</th>
+            <th>Curso/Turma</th>
+            <th>Contato</th>
+            <th>Data</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Maria Santos</td>
+            <td>Técnico em Informática - 2A</td>
+            <td>maria@email.com</td>
+            <td>14/03/2024</td>
+            <td><span class="status yellow">Pendente</span></td>
+          </tr>
+          <tr>
+            <td>Carlos Oliveira</td>
+            <td>Técnico em Mecânica - 1B</td>
+            <td>(11) 99999-8888</td>
+            <td>15/03/2024</td>
+            <td><span class="status yellow">Pendente</span></td>
+          </tr>
+          <tr>
+            <td>João Silva</td>
+            <td>Técnico em Administração - 3A</td>
+            <td>joao@email.com</td>
+            <td>12/03/2024</td>
+            <td><span class="status gray">Aprovado</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+  </main>
+</body>
+</html>
